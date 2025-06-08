@@ -12,22 +12,17 @@ use Filament\Resources\Resource;
 use Illuminate\Support\Facades\Auth;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Section;
-use Filament\Pages\Actions\EditAction;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
-use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteBulkAction;
 use App\Filament\Resources\CustomerResource\Pages;
-use App\Filament\Resources\CustomerResource\Pages\EditCustomer;
-use App\Filament\Resources\CustomerResource\Pages\ListCustomers;
-use App\Filament\Resources\CustomerResource\Pages\CreateCustomer;
 
 class CustomerResource extends Resource
 {
@@ -98,17 +93,13 @@ class CustomerResource extends Resource
                         ->maxDate(now()->subYears(13)),
 
                     FileUpload::make('profil_picture')
-                        ->label('Foto Profil')
+                        ->label('Foto Profil (Opsional)')
                         ->image()
                         ->imagePreviewHeight('150')
-                        ->maxSize(2048) // 2MB
+                        ->maxSize(2048)
                         ->directory('profiles')
-                        ->disk('public')
-                        ->visibility('public')
-                        ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif', 'image/webp'])
-                        ->uploadingMessage('Uploading profile picture...')
-                        ->helperText('Upload foto profil customer. Format: JPG, PNG, GIF, WEBP. Maksimal 2MB.')
-                        ->nullable(),
+                        ->nullable()
+                        ->helperText('Upload foto profil customer. Format: JPG, PNG. Maksimal 2MB. Bisa dikosongkan.'),
                 ])
                 ->columns(2),
 
@@ -241,7 +232,7 @@ class CustomerResource extends Resource
     // Helper method untuk check admin
     protected static function isAdmin(): bool
     {
-        return Auth::check() && Auth::user()?->u_type === 'admin';
+       return Auth::check() && Auth::user()?->u_type === 'admin';
 
     }
 

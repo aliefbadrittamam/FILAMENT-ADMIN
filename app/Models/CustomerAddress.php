@@ -13,6 +13,7 @@ class CustomerAddress extends Model
     protected $primaryKey = 'id_customer_addresses';
 
     protected $fillable = [
+        'id_customer',
         'alamat_lengkap',
         'kota',
         'provinsi',
