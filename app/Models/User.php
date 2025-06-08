@@ -18,12 +18,14 @@ class User extends Authenticatable implements FilamentUser
     protected $table = 'users';
     protected $primaryKey = 'id_user';
 
-    protected $fillable = [
-        'username',
-        'email',
-        'email_verified',
+   protected $fillable = [
+        'id_user',          
+        'nama_lengkap',
         'password',
-        'u_type',
+        'email',
+        'no_telepon',
+        'tanggal_lahir',
+        'profil_picture',
     ];
 
     protected $hidden = [
