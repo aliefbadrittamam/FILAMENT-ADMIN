@@ -26,7 +26,7 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            ->login()
+            ->login()->brandName('MEBELIN ADMIN')
             ->colors([
                 'primary' => Color::Amber,
             ])
