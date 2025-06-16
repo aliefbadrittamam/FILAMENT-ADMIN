@@ -1,0 +1,1 @@
+php artisan make:migration create_customer_addresses_table --create=customer_addresses
