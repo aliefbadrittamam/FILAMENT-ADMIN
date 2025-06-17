@@ -13,6 +13,8 @@ class Order extends Model
 
     protected $table = 'orders';
     protected $primaryKey = 'id_order';
+    public $incrementing = true;
+    protected $keyType = 'int';
 
     protected $fillable = [
         'order_number',

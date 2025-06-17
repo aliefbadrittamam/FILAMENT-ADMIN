@@ -194,10 +194,10 @@ class WishlistResource extends Resource
                     }),
             ])
             ->actions([
-                ViewAction::make()
-                    ->modalContent(fn ($record) => view('filament.modals.wishlist-detail', ['record' => $record]))
-                    ->modalWidth('2xl')
-                    ->label('Detail'),
+                // ViewAction::make()
+                //     ->modalContent(fn ($record) => view('filament.modals.wishlist-detail', ['record' => $record]))
+                //     ->modalWidth('2xl')
+                //     ->label('Detail'),
 
                 Tables\Actions\DeleteAction::make()
                     ->requiresConfirmation()
